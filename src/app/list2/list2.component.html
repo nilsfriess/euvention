@@ -1,0 +1,72 @@
+<md-tab-group *ngIf="showDetail">
+    <md-tab label="Current">
+        <td-expansion-panel *ngFor="let job of jobs" disabled="true" label="label" sublabel="sublabel" [disableRipple]="false">
+            <ng-template td-expansion-panel-header>
+                <h3><span>{{job.id}}</span>{{job.name}}</h3>
+                <span class="status">
+                    <span class="bar">
+                        <span class="in-stock detail" [style.width]="job.status[0] + '%'"></span>
+                <span class="being-cleaned detail" [style.width]="job.status[1] + '%'"></span>
+                <span class="in-use" [style.width]="job.status[2] + '%'"></span>
+                </span>
+                </span>
+                <md-checkbox>Done</md-checkbox>
+            </ng-template>
+            <md-selection-list #joblist>
+                <md-list-option *ngFor="let tool of job.tools">
+                    {{tool}}
+                </md-list-option>
+            </md-selection-list>
+        </td-expansion-panel>
+    </md-tab>
+    <md-tab label="Finished">
+        <h1>Some more tab content</h1>
+        <p>...</p>
+    </md-tab>
+</md-tab-group>
+<ng-container *ngIf="!showDetail">
+    <td-expansion-panel *ngFor="let job of jobs" label="label" sublabel="sublabel" [disableRipple]="false">
+        <ng-template td-expansion-panel-header>
+            <h3><span>{{job.id}}</span>{{job.name}}</h3>
+            <span class="status">
+                <span class="bar">
+                    <span class="in-stock" [style.width]="job.status[0] + '%'"></span>
+            <span class="being-cleaned" [style.width]="job.status[1] + '%'"></span>
+            <span class="in-use" [style.width]="job.status[2] + '%'"></span>
+            </span>
+            </span>
+        </ng-template>
+        <md-selection-list #shoes>
+            <md-list-option *ngFor="let tool of job.tools">
+                {{tool}}
+            </md-list-option>
+        </md-selection-list>
+    </td-expansion-panel>
+</ng-container>
+
+
+<div class="footer" *ngIf="showDetail">
+    <div class="in-stock">
+        <span>In stock</span>
+        <span class="block"></span>
+    </div>
+    <div class="being-cleaned">
+        <span>Being cleaned</span>
+        <span class="block"></span>
+    </div>
+</div>
+
+<div class="footer" *ngIf="!showDetail">
+    <div class="in-stock">
+        <span>In stock</span>
+        <span class="block"></span>
+    </div>
+    <div class="being-cleaned">
+        <span>Being cleaned</span>
+        <span class="block"></span>
+    </div>
+    <div class="in-use">
+        <span>In use</span>
+        <span class="block"></span>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+md-list-item {
+    transition: all 500ms ease;
+    &:nth-child(2n) {
+        background: lighten(#ccc, 12%);
+    }
+    .id {
+        font-weight: 200;
+        margin-right: 12px;
+    }
+    /*p {
+        position: absolute;
+        right: 10px;
+        top: -2px;
+    }*/
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}
